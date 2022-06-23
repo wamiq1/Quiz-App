@@ -93,18 +93,30 @@ function App() {
 	const [showScore, setShowScore] = useState(false);
 	const [score, setScore] = useState(0);
 	const [disabledBtn, setDisabledBtn] = useState(0);
-	const [percentage, setPercentage] = useState(0)
+	const [percentage, setPercentage] = useState(0);
+	const [conditionalBtn, setConditionalBtn] = useState(false)
 
 	const handleAnswerScoring = (isCorrect) => {
 		if (isCorrect) {
 			setScore(score + 1);
 		}
 	};
+
+	const getPercentage = () => {
+		setPercentage(percentage + score * 10);
+		setShowScore(true);
+	}
   const handleNextQuestion = () => {
     const nextQuestion = currentQuestion + 1;
 	if (nextQuestion < quizQuestions.length) {
+		console.log("Next",nextQuestion)
 		setCurrentQuestion(nextQuestion);
-		setDisabledBtn(nextQuestion)
+		setDisabledBtn(nextQuestion);
+
+		if (nextQuestion === 8) {
+			console.log("Next Nested",nextQuestion)
+			setConditionalBtn(true)
+		}
 	} else {
 		setShowScore(true);
 	}
@@ -123,10 +135,12 @@ function App() {
   return (
     <div className="App">
       {showScore ? (
+				<>
 				<div className='score-section'>
 					You scored {score} out of {quizQuestions.length}
-					Your Percentage is {percentage}
 				</div>
+				<div>Your Percentage is {percentage}%</div>
+				</>
 			) : (
 				<>
 					<div className='question-section'>
@@ -143,7 +157,8 @@ function App() {
               						</ div>
             				})}
 						<button disabled={!disabledBtn} onClick={handlePreviousQuestion}>Previous</button>
-            			<button onClick={handleNextQuestion}>Next</button>
+            			{!conditionalBtn  ? <button onClick={handleNextQuestion}>Next</button> :
+            			<button onClick={getPercentage}>Done</button>}
 					</div>
 				</>
 			)}
