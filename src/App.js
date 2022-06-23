@@ -2,89 +2,89 @@ import './App.css';
 import { useState } from 'react'
 
 function App() {
-  const questions = [
+  const quizQuestions = [
 		{
-			questionText: 'Which of the following is a server-side Java Script object?',
+			question: 'Which of the following is a server-side Java Script object?',
 			answerOptions: [
-				{ answerText: 'Function', isCorrect: false },
-				{ answerText: 'File', isCorrect: true },
-				{ answerText: 'FileUpload', isCorrect: false },
-				{ answerText: 'Date', isCorrect: false },
+				{ answer: 'Function', isCorrect: false },
+				{ answer: 'File', isCorrect: true },
+				{ answer: 'FileUpload', isCorrect: false },
+				{ answer: 'Date', isCorrect: false },
 			],
 		},
 		{
-			questionText: 'Java script can be used for Storing the forms contents to a database file on the server',
+			question: 'Java script can be used for Storing the forms contents to a database file on the server',
 			answerOptions: [
-				{ answerText: 'False', isCorrect: false },
-				{ answerText: 'True', isCorrect: true },
+				{ answer: 'False', isCorrect: false },
+				{ answer: 'True', isCorrect: true },
 			],
 		},
 		{
-			questionText: 'To insert a JavaScript into an HTML page, which tag is used?',
+			question: 'To insert a JavaScript into an HTML page, which tag is used?',
 			answerOptions: [
-				{ answerText: '< script=â€™javaâ€™>', isCorrect: false },
-				{ answerText: '< javascript>', isCorrect: false },
-				{ answerText: '< script>', isCorrect: true },
-				{ answerText: '< js>', isCorrect: false },
+				{ answer: '< script=â€™javaâ€™>', isCorrect: false },
+				{ answer: '< javascript>', isCorrect: false },
+				{ answer: '< script>', isCorrect: true },
+				{ answer: '< js>', isCorrect: false },
 			],
 		},
 		{
-			questionText: 'Which of the below is used in Java script to insert special characters?',
+			question: 'Which of the below is used in Java script to insert special characters?',
 			answerOptions: [
-				{ answerText: '&', isCorrect: true },
-				{ answerText: '/', isCorrect: false },
-				{ answerText: '-', isCorrect: false },
-				{ answerText: '%', isCorrect: false },
+				{ answer: '&', isCorrect: true },
+				{ answer: '/', isCorrect: false },
+				{ answer: '-', isCorrect: false },
+				{ answer: '%', isCorrect: false },
 			],
 		},
 		{
-			questionText: 'Which of the ways below is incorrect of instantiating a date?',
+			question: 'Which of the ways below is incorrect of instantiating a date?',
 			answerOptions: [
-				{ answerText: 'new Date(dateString)', isCorrect: false },
-				{ answerText: 'new Date()', isCorrect: true },
-				{ answerText: 'new Date(seconds)', isCorrect: false },
-				{ answerText: 'new Date(year, month, day, hours, minutes, seconds, milliseconds)', isCorrect: false },
+				{ answer: 'new Date(dateString)', isCorrect: false },
+				{ answer: 'new Date()', isCorrect: true },
+				{ answer: 'new Date(seconds)', isCorrect: false },
+				{ answer: 'new Date(year, month, day, hours, minutes, seconds, milliseconds)', isCorrect: false },
 			],
 		},
 		{
-			questionText: 'Which of the below is used in Java script to insert special characters?',
+			question: 'Which of the below is used in Java script to insert special characters?',
 			answerOptions: [
-				{ answerText: 'The number of days since January 1st, 1900', isCorrect: true },
-				{ answerText: 'The number of seconds since January 1st, 1970', isCorrect: false },
-				{ answerText: 'The number of milliseconds since January 1st, 1970', isCorrect: false },
-				{ answerText: 'The number of picoseconds since January 1st, 1970', isCorrect: false },
+				{ answer: 'The number of days since January 1st, 1900', isCorrect: true },
+				{ answer: 'The number of seconds since January 1st, 1970', isCorrect: false },
+				{ answer: 'The number of milliseconds since January 1st, 1970', isCorrect: false },
+				{ answer: 'The number of picoseconds since January 1st, 1970', isCorrect: false },
 			],
 		},
 		{
-			questionText: 'JavaScript ignores extra spaces',
+			question: 'JavaScript ignores extra spaces',
 			answerOptions: [
-				{ answerText: 'True', isCorrect: false },
-				{ answerText: 'False', isCorrect: true },
+				{ answer: 'True', isCorrect: false },
+				{ answer: 'False', isCorrect: true },
 			],
 		},
 		{
-			questionText: 'Which is the correct way to write a JavaScript array?',
+			question: 'Which is the correct way to write a JavaScript array?',
 			answerOptions: [
-				{ answerText: 'var txt = new Array(1:"arr",2:"kim",3:"jim")', isCorrect: false },
-				{ answerText: 'var txt = new Array:1=(" arr ")2=("kim")3=("jim")', isCorrect: false },
-				{ answerText: 'var txt = new Array("arr ","kim","jim")', isCorrect: true },
-				{ answerText: 'var txt = new Array=" arr ","kim","jim"', isCorrect: false },
+				{ answer: 'var txt = new Array(1:"arr",2:"kim",3:"jim")', isCorrect: false },
+				{ answer: 'var txt = new Array:1=(" arr ")2=("kim")3=("jim")', isCorrect: false },
+				{ answer: 'var txt = new Array("arr ","kim","jim")', isCorrect: true },
+				{ answer: 'var txt = new Array=" arr ","kim","jim"', isCorrect: false },
 			],
 		},
 		{
-			questionText: 'Javascript is an object oriented language?',
+			question: 'Javascript is an object oriented language?',
 			answerOptions: [
-				{ answerText: 'False', isCorrect: true },
-				{ answerText: 'True', isCorrect: false },
+				{ answer: 'False', isCorrect: true },
+				{ answer: 'True', isCorrect: false },
 			],
 		},
 		{
-			questionText: 'Which of the following is not a valid JavaScript variable name?',
+			question: 'Which of the following is not a valid JavaScript variable name?',
 			answerOptions: [
-				{ answerText: '2java', isCorrect: true },
-				{ answerText: '_java_and_ java _names', isCorrect: false },
-				{ answerText: 'javaandjava', isCorrect: false },
-				{ answerText: 'None of the above', isCorrect: false },
+				{ answer: '2java', isCorrect: true },
+				{ answer: '_java_and_ java _names', isCorrect: false },
+				{ answer: 'javaandjava', isCorrect: false },
+				{ answer: 'None of the above', isCorrect: false },
 			],
 		},
 	];
@@ -92,43 +92,58 @@ function App() {
 	const [currentQuestion, setCurrentQuestion] = useState(0);
 	const [showScore, setShowScore] = useState(false);
 	const [score, setScore] = useState(0);
+	const [disabledBtn, setDisabledBtn] = useState(0);
+	const [percentage, setPercentage] = useState(0)
 
-	const handleAnswerOptionClick = (isCorrect) => {
+	const handleAnswerScoring = (isCorrect) => {
 		if (isCorrect) {
 			setScore(score + 1);
 		}
 	};
-  const handleQuestions = () => {
+  const handleNextQuestion = () => {
     const nextQuestion = currentQuestion + 1;
-		if (nextQuestion < questions.length) {
-			setCurrentQuestion(nextQuestion);
-		} else {
-			setShowScore(true);
-		}
+	if (nextQuestion < quizQuestions.length) {
+		setCurrentQuestion(nextQuestion);
+		setDisabledBtn(nextQuestion)
+	} else {
+		setShowScore(true);
+	}
+  }
+
+  const handlePreviousQuestion =() => {
+	  const previousQuestion = currentQuestion - 1;
+	  if (previousQuestion < quizQuestions.length) {
+		  setCurrentQuestion(previousQuestion);
+		  setDisabledBtn(previousQuestion)
+	  }
+	  else {
+		setShowScore(false);
+	  }
   }
   return (
     <div className="App">
       {showScore ? (
 				<div className='score-section'>
-					You scored {score} out of {questions.length}
+					You scored {score} out of {quizQuestions.length}
+					Your Percentage is {percentage}
 				</div>
 			) : (
 				<>
 					<div className='question-section'>
 						<div className='question-count'>
-							<span>Question {currentQuestion + 1}</span>/{questions.length}
+							<span>Question {currentQuestion + 1}</span>/{quizQuestions.length}
 						</div>
-						<div className='question-text'>{questions[currentQuestion].questionText}</div>
+						<div className='question-text'>{quizQuestions[currentQuestion].question}</div>
 					</div>
 					<div className='answer-section'>
-						{questions[currentQuestion].answerOptions.map((answerOption) => {
-              return <div key={answerOption.answerText}>
-              <input type="radio" id='check' onChange={() => handleAnswerOptionClick(answerOption.isCorrect)}/>
-              <label id='check'>{answerOption.answerText}</label>
-              {/* <button key={answerOption.answerText} onClick={() => handleAnswerOptionClick(answerOption.isCorrect)}>{answerOption.answerText}</button> */}
-              </ div>
-            })}
-            <button onClick={handleQuestions}>Next</button>
+						{quizQuestions[currentQuestion].answerOptions.map((answerOption) => {
+              				return <div key={answerOption.answer}>
+              						<input type="radio" onChange={() => handleAnswerScoring(answerOption.isCorrect)}/>
+              						<label>{answerOption.answer}</label>
+              						</ div>
+            				})}
+						<button disabled={!disabledBtn} onClick={handlePreviousQuestion}>Previous</button>
+            			<button onClick={handleNextQuestion}>Next</button>
 					</div>
 				</>
 			)}
