@@ -94,7 +94,8 @@ function App() {
 	const [score, setScore] = useState(0);
 	const [disabledBtn, setDisabledBtn] = useState(0);
 	const [percentage, setPercentage] = useState(0);
-	const [conditionalBtn, setConditionalBtn] = useState(false)
+	const [conditionalBtn, setConditionalBtn] = useState(false);
+	const [grade, setGrade] = useState("");
 
 	const handleAnswerScoring = (isCorrect) => {
 		if (isCorrect) {
@@ -103,13 +104,39 @@ function App() {
 	};
 
 	const getPercentage = () => {
-		setPercentage(percentage + score * 10);
+		const currentPercentage = percentage + score * 10
+		setPercentage(currentPercentage);
+		console.log("Percentage",currentPercentage)
+		getGrade(currentPercentage)
 		setShowScore(true);
+	}
+	const getGrade = (percentage) => {
+		console.log(percentage,'percentage')
+		if (percentage >= 90) {
+			setGrade("A+");
+		}
+		else if (percentage >= 80) {
+			setGrade("B+");
+		}
+		else if (percentage >= 70) {
+			setGrade("B");
+		}
+		else if (percentage >= 60) {
+			setGrade("C+");
+		}
+		else if (percentage >= 50) {
+			setGrade("C");
+		}
+		else if (percentage < 50) {
+			setGrade("You are Fail");
+		}
+		else {
+			setGrade("You are Fail");
+		}
 	}
   const handleNextQuestion = () => {
     const nextQuestion = currentQuestion + 1;
 	if (nextQuestion < quizQuestions.length) {
-		console.log("Next",nextQuestion)
 		setCurrentQuestion(nextQuestion);
 		setDisabledBtn(nextQuestion);
 
@@ -140,6 +167,7 @@ function App() {
 					You scored {score} out of {quizQuestions.length}
 				</div>
 				<div>Your Percentage is {percentage}%</div>
+				<div>Your Percentage is {grade}</div>
 				</>
 			) : (
 				<>
