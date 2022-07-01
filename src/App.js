@@ -1,5 +1,6 @@
 import './App.css';
-import { useState } from 'react'
+import { useState } from 'react';
+import Questions from './views/Questions/index'
 
 function App() {
   const quizQuestions = [
@@ -106,12 +107,10 @@ function App() {
 	const getPercentage = () => {
 		const currentPercentage = percentage + score * 10
 		setPercentage(currentPercentage);
-		console.log("Percentage",currentPercentage)
 		getGrade(currentPercentage)
 		setShowScore(true);
 	}
 	const getGrade = (percentage) => {
-		console.log(percentage,'percentage')
 		if (percentage >= 90) {
 			setGrade("A+");
 		}
@@ -141,7 +140,6 @@ function App() {
 		setDisabledBtn(nextQuestion);
 
 		if (nextQuestion === 8) {
-			console.log("Next Nested",nextQuestion)
 			setConditionalBtn(true)
 		}
 	} else {
@@ -159,6 +157,13 @@ function App() {
 		setShowScore(false);
 	  }
   }
+
+  const resetHandler = () => {
+	setShowScore(false);
+	setScore(0);
+	setPercentage(0);
+	setDisabledBtn(0);
+  }
   return (
     <div className="App">
       {showScore ? (
@@ -168,27 +173,19 @@ function App() {
 				</div>
 				<div>Your Percentage is {percentage}%</div>
 				<div>Your Percentage is {grade}</div>
+				<button onClick={resetHandler}>Restart</button>
 				</>
 			) : (
-				<>
-					<div className='question-section'>
-						<div className='question-count'>
-							<span>Question {currentQuestion + 1}</span>/{quizQuestions.length}
-						</div>
-						<div className='question-text'>{quizQuestions[currentQuestion].question}</div>
-					</div>
-					<div className='answer-section'>
-						{quizQuestions[currentQuestion].answerOptions.map((answerOption) => {
-              				return <div key={answerOption.answer}>
-              						<input type="radio" onChange={() => handleAnswerScoring(answerOption.isCorrect)}/>
-              						<label>{answerOption.answer}</label>
-              						</ div>
-            				})}
-						<button disabled={!disabledBtn} onClick={handlePreviousQuestion}>Previous</button>
-            			{!conditionalBtn  ? <button onClick={handleNextQuestion}>Next</button> :
-            			<button onClick={getPercentage}>Done</button>}
-					</div>
-				</>
+				<Questions 
+					disabledBtn={disabledBtn}
+					conditionalBtn={conditionalBtn}
+					questions={quizQuestions} 
+					currentQuestion={currentQuestion}
+					handleAnswerScoring={handleAnswerScoring} 
+					handleNextQuestion={handleNextQuestion}
+					handlePreviousQuestion={handlePreviousQuestion}
+					getPercentage={getPercentage}
+				/>
 			)}
     </div>
   );
